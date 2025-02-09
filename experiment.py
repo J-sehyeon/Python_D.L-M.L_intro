@@ -1,10 +1,20 @@
 N = int(input())
 A = list(map(int, input().split()))
-arr = [0] * 1001
 
+res = []
 for i in A:
-    t = 0
-    for j in range(1000, i, -1):
-        t = max(t, arr[j])
-    arr[i] = t + 1
-print(max(arr))
+    res.append([i])
+for i in range(1, N):
+    t = i
+    for j in range(i):
+        if A[j] < A[i] and len(res[t]) <= len(res[j]):
+            t = j
+    if t != i:
+        res[i] = res[t] + res[i]
+res.sort(key=len)
+print(len(res[-1]))
+print(*res[-1])
+
+     
+            
+
