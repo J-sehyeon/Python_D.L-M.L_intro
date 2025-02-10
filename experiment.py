@@ -1,20 +1,49 @@
+import sys
+input = sys.stdin.readline
+
 N = int(input())
-A = list(map(int, input().split()))
+deque = []
 
-res = []
-for i in A:
-    res.append([i])
-for i in range(1, N):
-    t = i
-    for j in range(i):
-        if A[j] < A[i] and len(res[t]) <= len(res[j]):
-            t = j
-    if t != i:
-        res[i] = res[t] + res[i]
-res.sort(key=len)
-print(len(res[-1]))
-print(*res[-1])
+def leng():
+    return len(deque)
 
-     
-            
+def fro(x):
+    deque.append(x)
+
+def bac(x):
+    deque.insert(0, x)
+
+def pop_x(x):
+    return deque.pop(x)
+
+def pri(x):
+    print(deque[x])
+
+for i in range(N):
+    t = input().rstrip()
+    if t in '3478':
+        if not leng():
+            print(-1)
+        else:
+            if t == '3':
+                print(pop_x(-1))
+            elif t == '4':
+                print(pop_x(0))
+            elif t == '7':
+                pri(-1)
+            else:
+                pri(0)
+    elif t == '5':
+        print(leng())
+    elif t == '6':
+        if leng():
+            print(0)
+        else:
+            print(1)
+    elif t[0] == '2':
+        bac(int(t[2:]))
+    else:
+        fro(int(t[2:]))
+
+
 
