@@ -1,0 +1,2 @@
+jupyter notebook kernel은 python interpreter를 기반으로 실행
+따라서 part3.3.ipynb에서 interpreter를 바꾸는 것이 아니라 kernel을 python에서 만들어둔 가상환경인 virtualenv_1에 연결해야 했다.
